@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600;700;800&display=swap');
+
+/* Standard settings for the whole page */
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none !important;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: 'Wix Madefor Display', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/* Let the page scrool smoothly when button redirects to div */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent users to scroll page left and right */
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  font-family: 'Wix Madefor Display', sans-serif;
+}
