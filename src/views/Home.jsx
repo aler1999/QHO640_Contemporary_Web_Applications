@@ -20,61 +20,74 @@ function Home() {
   const { user } = useAuth();
 
   const [eventList, setEventList] = useState([]);
+  const [searchString, setSearchString] = useState([]);
 
   const eventCollectionRef = collection(db, "events");
   const usersCollectionRef = collection(db, "users");
 
+  const getEventlist = async() => {
+    try {
+      // Read events data from database
+      const data = await getDocs(eventCollectionRef);
+      // Read users data from database
+      const users = await getDocs(usersCollectionRef);
+      // Organise users data
+      const filteredUsers = users.docs.map((doc) => ({
+        ...doc.data(), 
+        id: doc.id
+      }));
+      // Organise events data combining for each event its owner finding it in the filteredUsers array through its id
+      const filteredData = data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+        email: filteredUsers.find(item => item.id == doc.data().userId).email
+      }));
+      // Assign to the eventList useState the newly organised combined event and user data
+      setEventList(filteredData);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
-    const getEventlist = async() => {
-      try {
-        // Read events data from database
-        const data = await getDocs(eventCollectionRef);
-        // Read users data from database
-        const users = await getDocs(usersCollectionRef);
-        // Organise users data
-        const filteredUsers = users.docs.map((doc) => ({
-          ...doc.data(), 
-          id: doc.id
-        }));
-        // Organise events data combining for each event its owner finding it in the filteredUsers array through its id
-        const filteredData = data.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-          email: filteredUsers.find(item => item.id == doc.data().userId).email
-        }));
-        // Assign to the eventList useState the newly organised combined event and user data
-        setEventList(filteredData);
-      } catch (err) {
-        console.error(err);
-      }
-    };
     getEventlist();
   }, []);
 
+  const handleSearchChange = (e) => {
+    const searchValue = e.target.value;
+    setSearchString(searchValue);
+
+    // Filter the eventList based on the search string
+    const filteredEvents = eventList.filter((event) =>
+      event.name.toLowerCase().includes(searchValue.toLowerCase())
+    );
+
+    // Update the eventList state with the filtered events
+    setEventList(filteredEvents);
+  };
+
   return (
     <>
+    {console.log(eventList)}
       <Navigation />
       <Container>
         <h2>Welcome to the Student Events App</h2>
         <p>The app that brings students together</p>
-        <Form.Label htmlFor="inputPassword5">Search</Form.Label>
+        <Form.Label htmlFor="search">Search</Form.Label>
         <Stack gap={2}>
           <Form.Control
             type="text"
             id="search"
             placeholder="Event name..."
-          />
-          <Form.Control
-            type="date"
-            id="date"
-            placeholder="Event date..."
+            onChange={handleSearchChange}
           />
         </Stack>
         <br />
         <Row>
           {eventList.map((event) => (
-            <Col key={event.id}> 
+            <Col key={event.id} style={{ width: '100%' }}> 
               <Card 
+                key={event.id}
                 eventId={event.id}
                 name={event.name}
                 date={event.date}

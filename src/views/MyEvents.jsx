@@ -41,27 +41,30 @@ function MyEvents() {
     navigate(`/myevents/edit/${eventId}`);
   };
 
+  const getEventlist = async() => {
+    try {
+      // Read events data from database
+      const data = await getDocs(query(eventCollectionRef, where('userId', '==', auth.currentUser.uid)));
+      // Organise events data only for the events of the current user
+      const filteredData = data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id
+      }));
+      // Assign to the eventList useState the newly organised combined event and user data
+      setEventList(filteredData);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
-    const getEventlist = async() => {
-      try {
-        // Read events data from database
-        const data = await getDocs(query(eventCollectionRef, where('userId', '==', auth.currentUser.uid)));
-        // Organise events data only for the events of the current user
-        const filteredData = data.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id
-        }));
-        // Assign to the eventList useState the newly organised combined event and user data
-        setEventList(filteredData);
-      } catch (err) {
-        console.error(err);
-      }
-    };
     getEventlist();
   }, [user]);
 
   return (
     <>
+      {console.log("refresh!")}
+      {console.log(auth.currentUser)}
       <Navigation />
       <Container>
         <h2>My Events</h2>
@@ -70,28 +73,28 @@ function MyEvents() {
           <Stack gap={3}>
             {eventList.map((event) => (
               <Card>
-              <Card.Body>
-                <Card.Title>{event.name}</Card.Title>
-                <Card.Subtitle>Location: {event.location}</Card.Subtitle>
-                <Card.Text>
-                  <p>
-                    Date: {event.date},
-                    Start Time: {event.time_start},
-                    End Time: {event.time_end},
-                    Price: £{event.price},
-                    Participants: {event.participants.length}
-                  </p>
-                </Card.Text>
-                {/* Edit Button */}
-                <Button variant="primary" className="me-2" onClick={() => handleEdit(event.id)}>
-                  Edit
-                </Button>
-                {/* Delete Button */}
-                <Button variant="danger" onClick={() => handleDelete(event.id)}>
-                  Delete
-                </Button>
-              </Card.Body>
-            </Card>
+                <Card.Body>
+                  <Card.Title>{event.name}</Card.Title>
+                  <Card.Subtitle>Location: {event.location}</Card.Subtitle>
+                  <Card.Text>
+                    <p>
+                      Date: {event.date},
+                      Start Time: {event.time_start},
+                      End Time: {event.time_end},
+                      Price: £{event.price},
+                      Participants: {event.participants.length}
+                    </p>
+                  </Card.Text>
+                  {/* Edit Button */}
+                  <Button variant="primary" className="me-2" onClick={() => handleEdit(event.id)}>
+                    Edit
+                  </Button>
+                  {/* Delete Button */}
+                  <Button variant="danger" onClick={() => handleDelete(event.id)}>
+                    Delete
+                  </Button>
+                </Card.Body>
+              </Card>
             ))}
           </Stack>
       </Container>

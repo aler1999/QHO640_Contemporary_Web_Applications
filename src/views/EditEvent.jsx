@@ -75,31 +75,31 @@ function EditEvent() {
     };
   }
 
-  useEffect(() => {
-    const getEvent = async () => {
-      try {
-        // Read event data from the database
-        const data = await getDoc(eventDocumentRef);
-  
-        // Check if the document exists
-        if (data.exists()) {
-          // Access other data in the document
-          const eventData = data.data();
-          // Assign to the eventList useState the newly organized combined event and user data
-          setNewName(eventData.name);
-          setNewDate(eventData.date);
-          setNewTime_Start(eventData.time_start);
-          setNewTime_End(eventData.time_end);
-          setNewLocation(eventData.location);
-          setNewPrice(eventData.price);
-        } else {
-          console.log('Document does not exist');
-        }
-      } catch (error) {
-        console.error('Error getting document:', error);
+  const getEvent = async () => {
+    try {
+      // Read event data from the database
+      const data = await getDoc(eventDocumentRef);
+
+      // Check if the document exists
+      if (data.exists()) {
+        // Access other data in the document
+        const eventData = data.data();
+        // Assign to the eventList useState the newly organized combined event and user data
+        setNewName(eventData.name);
+        setNewDate(eventData.date);
+        setNewTime_Start(eventData.time_start);
+        setNewTime_End(eventData.time_end);
+        setNewLocation(eventData.location);
+        setNewPrice(eventData.price);
+      } else {
+        console.log('Document does not exist');
       }
-    };
-  
+    } catch (error) {
+      console.error('Error getting document:', error);
+    }
+  };
+
+  useEffect(() => {
     getEvent();
   }, []);
 

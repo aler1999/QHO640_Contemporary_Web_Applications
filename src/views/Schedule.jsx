@@ -38,32 +38,32 @@ function Schedule() {
       }
     }
   };
+
+  const getEventlist = async() => {
+    try {
+      const data = await getDocs(
+        query(
+          eventCollectionRef,
+          where('participants', 'array-contains', user.uid)
+        )
+      );
+      const filteredData = data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id
+      }));
+      setEventList(filteredData);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
-    const getEventlist = async() => {
-      try {
-        // Read events data from database
-        const data = await getDocs(
-          query (
-            eventCollectionRef, 
-            where('participants', 'array-contains', user.uid)
-          )
-        );
-        // Organise events data only for the events of the current user
-        const filteredData = data.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id
-        }));
-        // Assign to the eventList useState the newly organised combined event and user data
-        setEventList(filteredData);
-      } catch (err) {
-        console.error(err);
-      }
-    };
     getEventlist();
   }, [user]);
 
   return (
     <>
+    {console.log("refresh!")}
       <Navigation />
       <Container>
         <h2>Schedule</h2>
