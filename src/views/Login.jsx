@@ -25,9 +25,6 @@ function Login() {
   const [message, setMessage] = useState("");
 
   const login = async () => {
-
-    const usersCollectionRef = collection(db, "users");
-
     try {
       await signInWithEmailAndPassword(auth, email, password);
       navigate('/');
@@ -50,6 +47,9 @@ function Login() {
   };
 
   const loginWithGoogle = async () => {
+
+    const usersCollectionRef = collection(db, "users");
+
     try {
       const cred = await signInWithPopup(auth, GoogleProvider);
       // Check if the user already exists in the database

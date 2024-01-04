@@ -5,8 +5,6 @@ import { db, auth, GoogleProvider } from '../config/firebase';
 import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { collection, setDoc, doc } from 'firebase/firestore';
 
-import { useAuth } from '../components/AuthContext';
-
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import Message from '../components/Message';

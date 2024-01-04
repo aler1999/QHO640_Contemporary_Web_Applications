@@ -12,7 +12,6 @@ import Footer from '../components/Footer';
 
 import { db } from '../config/firebase';
 import { getDocs, collection } from 'firebase/firestore';
-import { useAuth } from '../components/AuthContext';
 
 function Home() {
 
