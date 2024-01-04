@@ -18,12 +18,11 @@ import { useAuth } from '../components/AuthContext';
 function EditEvent() {
 
   // Get eventId from the URL param eventId
-  const { eventId } = useParams();
+ // const { eventId } = useParams();
 
   // Using AuthContext to maintain user authentication state across multiple components
-  const { user } = useAuth();
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const [newName, setNewName] = useState("");
   const [newDate, setNewDate] = useState("");
@@ -33,11 +32,12 @@ function EditEvent() {
   const [newPrice, setNewPrice] = useState("");
   const [newImage, setNewImage] = useState(null);
 
-  const eventDocumentRef = doc(db, "events", eventId);
-
   const storage = getStorage();
 
   const onSubmitEvent = async () => {
+    
+    const eventDocumentRef = doc(db, "events", eventId);
+
     try {
       // If image got changed upload it to firebase
       if(newImage) {

@@ -14,23 +14,25 @@ import Schedule from './views/Schedule';
 function App() {
 
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/newevent" element={<NewEvent />} />
+    <>
+      <BrowserRouter>
+        <AuthProvider>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/newevent" element={<NewEvent />} />
 
-          <Route path="/myevents" element={<MyEvents />} />
-          <Route path="/myevents/edit/:eventId" element={<EditEvent />} />
+            <Route path="/myevents" element={<MyEvents />} />
+            <Route path="/myevents/edit/:eventId" element={<EditEvent />} />
 
-          <Route path="/schedule" element={<Schedule />} />
-        </Routes>
-      </AuthProvider>
-    </BrowserRouter>
+            <Route path="/schedule" element={<Schedule />} />
+          </Routes>
+        </AuthProvider>
+      </BrowserRouter>
+    </>
   );
-  
+
 }
 
 export default App;

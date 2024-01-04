@@ -16,40 +16,47 @@ import { useAuth } from '../components/AuthContext';
 
 function Home() {
 
-  // Using AuthContext to maintain user authentication state across multiple components
-  const { user } = useAuth();
-
+  const [originalEventList, setOriginalEventList] = useState([]);
   const [eventList, setEventList] = useState([]);
   const [searchString, setSearchString] = useState([]);
 
-  const eventCollectionRef = collection(db, "events");
-  const usersCollectionRef = collection(db, "users");
-
   const getEventlist = async() => {
+
+    const eventCollectionRef = collection(db, "events");
+    const usersCollectionRef = collection(db, "users");
+
     try {
       // Read events data from database
-      const data = await getDocs(eventCollectionRef);
+      const eventData = await getDocs(eventCollectionRef);
+      console.log("I am in getEventList function")
       // Read users data from database
       const users = await getDocs(usersCollectionRef);
+      
       // Organise users data
       const filteredUsers = users.docs.map((doc) => ({
         ...doc.data(), 
         id: doc.id
       }));
+
       // Organise events data combining for each event its owner finding it in the filteredUsers array through its id
-      const filteredData = data.docs.map((doc) => ({
+      const filteredEventData = eventData.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
-        email: filteredUsers.find(item => item.id == doc.data().userId).email
+        email: filteredUsers.find((item) => item.id === doc.data().userId).email,
       }));
+      
       // Assign to the eventList useState the newly organised combined event and user data
-      setEventList(filteredData);
+      setOriginalEventList(filteredEventData);
+      setEventList(filteredEventData);
     } catch (err) {
       console.error(err);
     }
   };
+  
 
   useEffect(() => {
+    console.log("fetched")
+    console.log("I m here")
     getEventlist();
   }, []);
 
@@ -57,8 +64,8 @@ function Home() {
     const searchValue = e.target.value;
     setSearchString(searchValue);
 
-    // Filter the eventList based on the search string
-    const filteredEvents = eventList.filter((event) =>
+    // Filter the original eventList based on the search string
+    const filteredEvents = originalEventList.filter((event) =>
       event.name.toLowerCase().includes(searchValue.toLowerCase())
     );
 

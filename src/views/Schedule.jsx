@@ -14,11 +14,11 @@ import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 
 function Schedule() {
+
   // Using AuthContext to maintain user authentication state across multiple components
   const { user } = useAuth();
 
   const [eventList, setEventList] = useState([]);
-  const eventCollectionRef = collection(db, "events");
 
   const handleWithdraw = async (eventId) => {
     // Display a confirmation dialog
@@ -40,6 +40,9 @@ function Schedule() {
   };
 
   const getEventlist = async() => {
+
+    const eventCollectionRef = collection(db, "events");
+
     try {
       const data = await getDocs(
         query(

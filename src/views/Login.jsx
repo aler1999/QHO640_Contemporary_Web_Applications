@@ -18,18 +18,16 @@ import Button from 'react-bootstrap/Button';
 
 function Login() {
 
-  // Using AuthContext to maintain user authentication state across multiple components
-  const { user } = useAuth();
-
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
-  const usersCollectionRef = collection(db, "users");
-
   const login = async () => {
+
+    const usersCollectionRef = collection(db, "users");
+
     try {
       await signInWithEmailAndPassword(auth, email, password);
       navigate('/');

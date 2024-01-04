@@ -27,11 +27,12 @@ function NewEvent() {
   const [newPrice, setNewPrice] = useState("");
   const [newImage, setNewImage] = useState(null);
 
-  const eventCollectionRef = collection(db, "events");
-
   const storage = getStorage();
 
   const onSubmitEvent = async () => {
+
+    const eventCollectionRef = collection(db, "events");
+
     try {
       // Upload image to firebase
       if(!newImage) return;
