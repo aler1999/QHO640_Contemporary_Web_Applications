@@ -7,6 +7,7 @@ import Home from './views/Home';
 import SignUp from './views/SignUp';
 import Login from './views/Login';
 import NewEvent from './views/NewEvent';
+import Event from './views/Event';
 import MyEvents from './views/MyEvents';
 import EditEvent from './views/EditEvent';
 import Schedule from './views/Schedule';
@@ -22,6 +23,8 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
             <Route path="/newevent" element={<NewEvent />} />
+
+            <Route path="/event/:eventId" element={<Event />}></Route>
 
             <Route path="/myevents" element={<MyEvents />} />
             <Route path="/myevents/edit/:eventId" element={<EditEvent />} />

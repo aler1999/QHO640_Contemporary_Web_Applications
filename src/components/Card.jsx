@@ -48,18 +48,15 @@ function CardComponent({eventId, name, date, time_start, time_end, location, pri
       <div style={{ position: 'absolute', top: '0', right: '0', background: 'rgba(255, 255, 255, 0.8)', padding: '5px' }}>
         <b>£{price}</b>
       </div>
-      <Card.Img variant="top" src={image} />
+      <Card.Img variant="top" src={image} style={{ cursor: 'pointer' }} onClick={() => navigate(`/event/${eventId}`)} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Text>
-          <p>Date: {date}</p>
-          <p>Start: {time_start} - End: {time_end}</p> 
-          <p>Location: {location}</p>
-          <p>Participants: {participantsArray.length}</p>
-          <p>
-            Organiser:<br />
-            {owner}
-          </p> 
+          <p>📅 {new Date(date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+          <p>⏰ {time_start} - {time_end}</p> 
+          <p>📍 {location}</p>
+          <p>👥 {participantsArray.length}</p>
+          <p>📧 {owner}</p> 
         </Card.Text>
         {user ? (
           <Button variant="primary" onClick={handleParticipant}>Participate</Button>

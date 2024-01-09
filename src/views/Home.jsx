@@ -84,9 +84,9 @@ function Home() {
           />
         </Stack>
         <br />
-        <Row>
+        <Row className="justify-content-center">
           {eventList.map((event) => (
-            <Col key={event.id} style={{ width: '100%' }}> 
+            <Col key={event.id} className="col-sm">
               <Card 
                 key={event.id}
                 eventId={event.id}

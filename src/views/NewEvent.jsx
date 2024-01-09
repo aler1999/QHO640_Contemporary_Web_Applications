@@ -23,6 +23,7 @@ function NewEvent() {
   const navigate = useNavigate();
 
   const [newName, setNewName] = useState("");
+  const [newDescription, setNewDescription] = useState("");
   const [newDate, setNewDate] = useState("");
   const [newTime_Start, setNewTime_Start] = useState("");
   const [newTime_End, setNewTime_End] = useState("");
@@ -48,6 +49,7 @@ function NewEvent() {
       // Create a new document for the new event
       await addDoc(eventCollectionRef, {
         name: newName, 
+        description: newDescription,
         date: newDate, 
         time_start: newTime_Start, 
         time_end: newTime_End, 
@@ -79,6 +81,15 @@ function NewEvent() {
                   id="name"
                   placeholder="Name..." 
                   onChange={(e) => setNewName(e.target.value)}
+                />
+              </div>
+              <div>
+                <Form.Label htmlFor="description">Description</Form.Label>
+                <Form.Control
+                  type="textbox"
+                  id="description"
+                  placeholder="Description..." 
+                  onChange={(e) => setNewDescription(e.target.value)}
                 />
               </div>
               <div>

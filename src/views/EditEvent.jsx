@@ -26,6 +26,7 @@ function EditEvent() {
   const navigate = useNavigate();
 
   const [newName, setNewName] = useState("");
+  const [newDescription, setNewDescription] = useState("");
   const [newDate, setNewDate] = useState("");
   const [newTime_Start, setNewTime_Start] = useState("");
   const [newTime_End, setNewTime_End] = useState("");
@@ -50,6 +51,7 @@ function EditEvent() {
         // Update document with image URL as well
         await updateDoc(eventDocumentRef, {
           name: newName, 
+          description: newDescription, 
           date: newDate, 
           time_start: newTime_Start, 
           time_end: newTime_End, 
@@ -62,6 +64,7 @@ function EditEvent() {
         // Update document without image URL
         await updateDoc(eventDocumentRef, {
           name: newName, 
+          description: newDescription, 
           date: newDate, 
           time_start: newTime_Start, 
           time_end: newTime_End, 
@@ -87,6 +90,7 @@ function EditEvent() {
         const eventData = data.data();
         // Assign to the eventList useState the newly organized combined event and user data
         setNewName(eventData.name);
+        setNewDescription(eventData.description);
         setNewDate(eventData.date);
         setNewTime_Start(eventData.time_start);
         setNewTime_End(eventData.time_end);
@@ -120,6 +124,15 @@ function EditEvent() {
                   id="name"
                   value={newName} 
                   onChange={(e) => setNewName(e.target.value)}
+                />
+              </div>
+              <div>
+                <Form.Label htmlFor="description">Description</Form.Label>
+                <Form.Control
+                  type="textbox"
+                  id="description"
+                  value={newDescription} 
+                  onChange={(e) => setNewDescription(e.target.value)}
                 />
               </div>
               <div>
