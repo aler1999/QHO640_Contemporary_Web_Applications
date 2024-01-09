@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Container from 'react-bootstrap/Container';
 import Stack from 'react-bootstrap/Stack';
@@ -19,6 +20,8 @@ function NewEvent() {
   // Using AuthContext to maintain user authentication state across multiple components
   const { user } = useAuth();
 
+  const navigate = useNavigate();
+
   const [newName, setNewName] = useState("");
   const [newDate, setNewDate] = useState("");
   const [newTime_Start, setNewTime_Start] = useState("");
@@ -27,12 +30,11 @@ function NewEvent() {
   const [newPrice, setNewPrice] = useState("");
   const [newImage, setNewImage] = useState(null);
 
+  const eventCollectionRef = collection(db, "events");
+
   const storage = getStorage();
 
   const onSubmitEvent = async () => {
-
-    const eventCollectionRef = collection(db, "events");
-
     try {
       // Upload image to firebase
       if(!newImage) return;
@@ -55,7 +57,7 @@ function NewEvent() {
         userId: auth?.currentUser?.uid,
         image: downloadURL
       });
-      window.location.href = '/';
+      navigate('/');
     } catch(err) {
       console.error(err);
     };

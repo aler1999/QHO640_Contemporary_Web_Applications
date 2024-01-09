@@ -35,9 +35,9 @@ function EditEvent() {
 
   const storage = getStorage();
 
-  const onSubmitEvent = async () => {
+  const eventDocumentRef = doc(db, "events", eventId);
 
-    const eventDocumentRef = doc(db, "events", eventId);
+  const onSubmitEvent = async () => {
 
     try {
       // If image got changed upload it to firebase

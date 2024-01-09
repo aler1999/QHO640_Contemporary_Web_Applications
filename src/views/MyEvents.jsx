@@ -20,6 +20,8 @@ function MyEvents() {
 
   const [eventList, setEventList] = useState([]);
 
+  const eventCollectionRef = collection(db, "events");
+
   const handleDelete = async (eventId) => {
     // Display a confirmation dialog
     const isConfirmed = window.confirm("Are you sure you want to delete this item?");
@@ -41,9 +43,6 @@ function MyEvents() {
   };
 
   const getEventlist = async() => {
-
-    const eventCollectionRef = collection(db, "events");
-
     try {
       // Read events data from database
       const data = await getDocs(query(eventCollectionRef, where('userId', '==', auth.currentUser.uid)));

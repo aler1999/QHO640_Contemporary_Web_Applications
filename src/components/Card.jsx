@@ -26,7 +26,7 @@ function CardComponent({eventId, name, date, time_start, time_end, location, pri
     };
 
     fetchParticipants();
-  }, [eventDocumentRef]);
+  }, []);
 
   const handleParticipant = async () => {
     const currentUserID = auth.currentUser.uid;

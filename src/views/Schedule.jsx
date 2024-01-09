@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Container from 'react-bootstrap/Container';
 import Stack from 'react-bootstrap/Stack';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
-import { db, auth } from '../config/firebase';
+import { db } from '../config/firebase';
 import { getDocs, collection, doc, updateDoc, arrayRemove, query, where } from 'firebase/firestore';
 
 import { useAuth } from '../components/AuthContext';
@@ -17,7 +18,11 @@ function Schedule() {
   // Using AuthContext to maintain user authentication state across multiple components
   const { user } = useAuth();
 
+  const navigate = useNavigate();
+
   const [eventList, setEventList] = useState([]);
+
+  const eventCollectionRef = collection(db, "events");
 
   const handleWithdraw = async (eventId) => {
     // Display a confirmation dialog
@@ -30,18 +35,15 @@ function Schedule() {
         await updateDoc(doc(db, 'events', eventId), {
           participants: arrayRemove(user.uid)
         });
-  
-        location.reload()
       } catch (error) {
         console.error('Error withdrawing from event:', error);
       }
     }
+
+    navigate('/');
   };
 
   const getEventlist = async() => {
-
-    const eventCollectionRef = collection(db, "events");
-
     try {
       const data = await getDocs(
         query(

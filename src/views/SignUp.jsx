@@ -22,10 +22,9 @@ function SignUp() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
+  const usersCollectionRef = collection(db, "users");
+
   const signUp = async () => {
-
-    const usersCollectionRef = collection(db, "users");
-
     try {
       await createUserWithEmailAndPassword(auth, email, password).then(cred => {
         return setDoc(doc(usersCollectionRef, cred.user.uid), {

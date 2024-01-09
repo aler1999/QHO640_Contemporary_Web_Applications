@@ -17,17 +17,15 @@ function Home() {
 
   const [originalEventList, setOriginalEventList] = useState([]);
   const [eventList, setEventList] = useState([]);
-  const [searchString, setSearchString] = useState([]);
+
+  const eventCollectionRef = collection(db, "events");
+  const usersCollectionRef = collection(db, "users");
 
   const getEventlist = async() => {
-
-    const eventCollectionRef = collection(db, "events");
-    const usersCollectionRef = collection(db, "users");
 
     try {
       // Read events data from database
       const eventData = await getDocs(eventCollectionRef);
-      console.log("I am in getEventList function")
       // Read users data from database
       const users = await getDocs(usersCollectionRef);
       
@@ -54,14 +52,11 @@ function Home() {
   
 
   useEffect(() => {
-    console.log("fetched")
-    console.log("I m here")
-    getEventlist();
+      getEventlist();
   }, []);
 
   const handleSearchChange = (e) => {
     const searchValue = e.target.value;
-    setSearchString(searchValue);
 
     // Filter the original eventList based on the search string
     const filteredEvents = originalEventList.filter((event) =>
