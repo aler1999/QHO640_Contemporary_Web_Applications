@@ -64,42 +64,43 @@ function MyEvents() {
 
   return (
     <>
-      {console.log("refresh!")}
-      {console.log(auth.currentUser)}
       <Navigation />
-      <Container>
-        <h2>My Events</h2>
-        <p>Check your own events</p>
+      <body style={{ backgroundColor: '#F0F2F5' }}>
         <br />
-          <Stack gap={3}>
-            {eventList.map((event) => (
-              <Card>
-                <Card.Body>
-                  <Card.Title>{event.name}</Card.Title>
-                  <Card.Subtitle>Location: {event.location}</Card.Subtitle>
-                  <Card.Text>
-                    <p>
-                      Date: {event.date},
-                      Start Time: {event.time_start},
-                      End Time: {event.time_end},
-                      Price: £{event.price},
-                      Participants: {event.participants.length}
-                    </p>
-                  </Card.Text>
-                  {/* Edit Button */}
-                  <Button variant="primary" className="me-2" onClick={() => handleEdit(event.id)}>
-                    Edit
-                  </Button>
-                  {/* Delete Button */}
-                  <Button variant="danger" onClick={() => handleDelete(event.id)}>
-                    Delete
-                  </Button>
-                </Card.Body>
-              </Card>
-            ))}
-          </Stack>
-      </Container>
-      <br />
+        <Container style={{ width: '80%' }}>
+          <h2>My Events</h2>
+          <p>Check your own events</p>
+          <br />
+            <Stack gap={3}>
+              {eventList.map((event) => (
+                <Card>
+                  <Card.Body>
+                    <Card.Title>{event.name}</Card.Title>
+                    <Card.Subtitle>Location: {event.location}</Card.Subtitle>
+                    <Card.Text>
+                      <p>
+                        Date: {event.date},
+                        Start Time: {event.time_start},
+                        End Time: {event.time_end},
+                        Price: £{event.price},
+                        Participants: {event.participants.length}
+                      </p>
+                    </Card.Text>
+                    {/* Edit Button */}
+                    <Button variant="primary" className="me-2" onClick={() => handleEdit(event.id)}>
+                      Edit
+                    </Button>
+                    {/* Delete Button */}
+                    <Button variant="danger" onClick={() => handleDelete(event.id)}>
+                      Delete
+                    </Button>
+                  </Card.Body>
+                </Card>
+              ))}
+            </Stack>
+        </Container>
+        <br />
+      </body>
       <Footer />
     </>
   );

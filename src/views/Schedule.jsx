@@ -67,37 +67,39 @@ function Schedule() {
 
   return (
     <>
-    {console.log("refresh!")}
       <Navigation />
-      <Container>
-        <h2>Schedule</h2>
-        <p>Check your event schedule</p>
+      <body style={{ backgroundColor: '#F0F2F5' }}>
         <br />
-          <Stack gap={3}>
-            {eventList.map((event) => (
-              <Card>
-              <Card.Body>
-                <Card.Title>{event.name}</Card.Title>
-                <Card.Subtitle>Location: {event.location}</Card.Subtitle>
-                <Card.Text>
-                  <p>
-                    Date: {event.date},
-                    Start Time: {event.time_start},
-                    End Time: {event.time_end},
-                    Price: £{event.price},
-                    Participants: {event.participants.length}
-                  </p>
-                </Card.Text>
-                {/* Withdraw Button */}
-                <Button variant="danger" onClick={() => handleWithdraw(event.id)}>
-                  Withdraw
-                </Button>
-              </Card.Body>
-            </Card>
-            ))}
-          </Stack>
-      </Container>
-      <br />
+        <Container style={{ width: '80%' }}>
+          <h2>Schedule</h2>
+          <p>Check your event schedule</p>
+          <br />
+            <Stack gap={3}>
+              {eventList.map((event) => (
+                <Card>
+                <Card.Body>
+                  <Card.Title>{event.name}</Card.Title>
+                  <Card.Subtitle>Location: {event.location}</Card.Subtitle>
+                  <Card.Text>
+                    <p>
+                      Date: {event.date},
+                      Start Time: {event.time_start},
+                      End Time: {event.time_end},
+                      Price: £{event.price},
+                      Participants: {event.participants.length}
+                    </p>
+                  </Card.Text>
+                  {/* Withdraw Button */}
+                  <Button variant="danger" onClick={() => handleWithdraw(event.id)}>
+                    Withdraw
+                  </Button>
+                </Card.Body>
+              </Card>
+              ))}
+            </Stack>
+        </Container>
+        <br />
+      </body>
       <Footer />
     </>
   );

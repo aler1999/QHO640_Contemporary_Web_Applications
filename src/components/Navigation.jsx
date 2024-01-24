@@ -27,30 +27,30 @@ function Navigation() {
 
   return (
     <>
-      <Navbar expand="lg" className="bg-body-tertiary">
+      <Navbar expand="lg" style={{ backgroundColor: '#18222D' }} className="text-white">
         <Container fluid>
-          <Navbar.Brand href="/">StudentEvents</Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll">
+          <Navbar.Brand className="text-white" href="/">StudentEvents</Navbar.Brand>
+          <Navbar.Toggle className="text-white" aria-controls="navbarScroll" />
+          <Navbar.Collapse className="text-white" id="navbarScroll">
             <Nav
               className="me-auto my-2 my-lg-0"
               style={{ maxHeight: '100px' }}
               navbarScroll
             >
-              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link className="text-white" href="/">Home</Nav.Link>
               {user ? (
                 <>
-                  <Nav.Link href="/newevent">New Event</Nav.Link>
-                  <Nav.Link href="/myevents">My Events</Nav.Link>
-                  <Nav.Link href="/schedule">Schedule</Nav.Link>
+                  <Nav.Link className="text-white" href="/newevent">New Event</Nav.Link>
+                  <Nav.Link className="text-white" href="/myevents">My Events</Nav.Link>
+                  <Nav.Link className="text-white" href="/schedule">Schedule</Nav.Link>
                 </>
               ) : null}
             </Nav>
             {!user ? (
-              <Nav.Link className="d-flex" href="/login">Login</Nav.Link>
+              <Nav.Link className="d-flex text-white" href="/login">Login</Nav.Link>
             ) : null}
             {user ? (
-              <Nav.Link className="d-flex" onClick={logout}>
+              <Nav.Link className="d-flex text-white" onClick={logout}>
                 <img
                   src={user.photoURL ? user.photoURL : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"}
                   alt={user.displayName} 
@@ -62,7 +62,6 @@ function Navigation() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <br />
     </>
   );
 }

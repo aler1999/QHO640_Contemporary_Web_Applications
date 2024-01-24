@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
+
+import BannerWithText from '../components/BannerWithText';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 
@@ -53,45 +55,25 @@ function Event() {
 
   return (
     <>
-      {console.log(eventData)}
       <Navigation />
-      <Container className="text-center">
-        <div style={{ position: 'relative', height: '350px', overflow: 'hidden' }}>
-          <Image
-            src={eventData.image}
-            className="img-fluid"
-            alt="Responsive image"
-            style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-          />
-          <div 
-            style={{ 
-              position: 'absolute', 
-              top: '50%', 
-              left: '50%', 
-              transform: 'translate(-50%, -50%)', 
-              color: 'white', 
-              textShadow: '2px 2px 4px rgba(0, 0, 0, 1)'
-            }}
-          >
-            <h2 style={{ fontSize: '40px', fontWeight: 'bold' }}>
-              {eventData.name}
-            </h2>
-          </div>
-        </div>
+      <body style={{ backgroundColor: '#F0F2F5' }}>
+        <BannerWithText imageUrl={eventData.image} title={eventData.name} />
+        <Container style={{ width: '80%' }} className="text-center">
+          <br />
+          <h3>Description</h3>
+          <br />
+          <p>{eventData.description}</p>
+          <br />
+          <h3>When is happening?</h3>
+          <br />
+          <p>On {new Date(eventData.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}, from {eventData.time_start} to {eventData.time_end}</p>
+          <br />
+          <h3>Where is happening?</h3>
+          <br />
+          <p>📍 { eventData.location }</p>
+        </Container>
         <br />
-        <h3>Description</h3>
-        <br />
-        <p>{eventData.description}</p>
-        <br />
-        <h3>When is happening?</h3>
-        <br />
-        <p>On {new Date(eventData.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}, from {eventData.time_start} to {eventData.time_end}</p>
-        <br />
-        <h3>Where is happening?</h3>
-        <br />
-        <p>📍 { eventData.location }</p>
-      </Container>
-      <br />
+      </body>
       <Footer />
     </>
   );

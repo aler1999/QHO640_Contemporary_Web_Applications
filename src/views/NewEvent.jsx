@@ -68,91 +68,94 @@ function NewEvent() {
   return (
     <>
       <Navigation />
-      <Container>
-        {user ? (
-          <>
-            <h2>Create a new event!</h2>
-            <p>Inspire other student and let them join your party</p>
-            <Stack gap={2}>
-              <div>
-                <Form.Label htmlFor="name">Name</Form.Label>
-                <Form.Control
-                  type="text"
-                  id="name"
-                  placeholder="Name..." 
-                  onChange={(e) => setNewName(e.target.value)}
-                />
-              </div>
-              <div>
-                <Form.Label htmlFor="description">Description</Form.Label>
-                <Form.Control
-                  type="textbox"
-                  id="description"
-                  placeholder="Description..." 
-                  onChange={(e) => setNewDescription(e.target.value)}
-                />
-              </div>
-              <div>
-                <Form.Label htmlFor="date">Date</Form.Label>
-                <Form.Control
-                  type="date"
-                  id="date"
-                  onChange={(e) => setNewDate(e.target.value)}
-                />
-              </div>
-              <div>
-                <Form.Label htmlFor="time_start">Time Start</Form.Label>
-                <Form.Control
-                  type="time"
-                  id="time_start"
-                  placeholder="Time Start..." 
-                  onChange={(e) => setNewTime_Start(e.target.value)}
-                />
-              </div>
-              <div>
-                <Form.Label htmlFor="time_end">Time End</Form.Label>
-                <Form.Control
-                  type="time"
-                  id="time_end"
-                  placeholder="Time End..." 
-                  onChange={(e) => setNewTime_End(e.target.value)}
-                />
-              </div>
-              <div>
-                <Form.Label htmlFor="name">Location</Form.Label>
-                <Form.Control
-                  type="text"
-                  id="location"
-                  placeholder="Location..." 
-                  onChange={(e) => setNewLocation(e.target.value)}
-                />
-              </div>
-              <div>
-                <Form.Label htmlFor="price">Price (£)</Form.Label>
-                <Form.Control
-                  type="number"
-                  id="price"
-                  placeholder="Price..." 
-                  onChange={(e) => setNewPrice(e.target.value)}
-                />
-              </div>
-              <div>
-                <Form.Label htmlFor="image">Image</Form.Label>
-                <Form.Control
-                  type="file"
-                  id="image"
-                  onChange={(e) => setNewImage(e.target.files[0])}
-                />
-              </div>
-              <br />
-              <Button className="mx-auto" style={{width: '200px'}} variant="primary" onClick={onSubmitEvent}>Create</Button>
-            </Stack>
-          </>
-        ) : (
-          <p>You need to be logged in to create a new event.</p>
-        )}
-      </Container>
-      <br />
+      <body style={{ backgroundColor: '#F0F2F5' }}>
+        <br />
+        <Container style={{ width: '80%' }}>
+          {user ? (
+            <>
+              <h2>Create a new event!</h2>
+              <p>Inspire other student and let them join your party</p>
+              <Stack gap={2}>
+                <div>
+                  <Form.Label htmlFor="name">Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    id="name"
+                    placeholder="Name..." 
+                    onChange={(e) => setNewName(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <Form.Label htmlFor="description">Description</Form.Label>
+                  <Form.Control
+                    type="textbox"
+                    id="description"
+                    placeholder="Description..." 
+                    onChange={(e) => setNewDescription(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <Form.Label htmlFor="date">Date</Form.Label>
+                  <Form.Control
+                    type="date"
+                    id="date"
+                    onChange={(e) => setNewDate(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <Form.Label htmlFor="time_start">Time Start</Form.Label>
+                  <Form.Control
+                    type="time"
+                    id="time_start"
+                    placeholder="Time Start..." 
+                    onChange={(e) => setNewTime_Start(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <Form.Label htmlFor="time_end">Time End</Form.Label>
+                  <Form.Control
+                    type="time"
+                    id="time_end"
+                    placeholder="Time End..." 
+                    onChange={(e) => setNewTime_End(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <Form.Label htmlFor="name">Location</Form.Label>
+                  <Form.Control
+                    type="text"
+                    id="location"
+                    placeholder="Location..." 
+                    onChange={(e) => setNewLocation(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <Form.Label htmlFor="price">Price (£)</Form.Label>
+                  <Form.Control
+                    type="number"
+                    id="price"
+                    placeholder="Price..." 
+                    onChange={(e) => setNewPrice(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <Form.Label htmlFor="image">Image</Form.Label>
+                  <Form.Control
+                    type="file"
+                    id="image"
+                    onChange={(e) => setNewImage(e.target.files[0])}
+                  />
+                </div>
+                <br />
+                <Button className="mx-auto" style={{width: '200px'}} variant="primary" onClick={onSubmitEvent}>Create</Button>
+              </Stack>
+            </>
+          ) : (
+            <p>You need to be logged in to create a new event.</p>
+          )}
+        </Container>
+        <br />
+      </body>
       <Footer />
     </>
   );

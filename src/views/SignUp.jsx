@@ -66,36 +66,39 @@ function SignUp() {
   return (
     <>
       <Navigation />
-      <Container>
-      {message ? (
-        <Message variant={'danger'} message={message} />
-      ) : null}
-        <h2>Sign up to our faboulus website!</h2>
-        <p>You can use your e-mail or your google account</p>
-        <Stack gap={2}>
-          <div>
-            <Form.Label htmlFor="email">E-mail</Form.Label>
-            <Form.Control
-              type="text"
-              id="email"
-              placeholder="E-mail..." 
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div>
-            <Form.Label htmlFor="password">Password</Form.Label>
-            <Form.Control
-              type="password"
-              id="password"
-              placeholder="Password..." 
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <Button className="mx-auto" style={{width: '200px'}} variant="primary" onClick={signUp}>Sign up</Button>
-          <Button className="mx-auto" style={{width: '200px'}} variant="primary" onClick={signUpWithGoogle}>Sign in with google</Button>
-        </Stack>
-      </Container>
-      <br />
+      <body style={{ backgroundColor: '#F0F2F5' }}>
+        <br />
+        <Container style={{ width: '80%' }}>
+        {message ? (
+          <Message variant={'danger'} message={message} />
+        ) : null}
+          <h2>Sign up to our faboulus website!</h2>
+          <p>You can use your e-mail or your google account</p>
+          <Stack gap={2}>
+            <div>
+              <Form.Label htmlFor="email">E-mail</Form.Label>
+              <Form.Control
+                type="text"
+                id="email"
+                placeholder="E-mail..." 
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div>
+              <Form.Label htmlFor="password">Password</Form.Label>
+              <Form.Control
+                type="password"
+                id="password"
+                placeholder="Password..." 
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <Button className="mx-auto" style={{width: '200px'}} variant="primary" onClick={signUp}>Sign up</Button>
+            <Button className="mx-auto" style={{width: '200px'}} variant="primary" onClick={signUpWithGoogle}>Sign in with google</Button>
+          </Stack>
+        </Container>
+        <br />
+      </body>
       <Footer />
     </>
   )

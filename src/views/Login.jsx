@@ -70,37 +70,40 @@ function Login() {
   return (
     <>
       <Navigation />
-      <Container>
-      {message ? (
-        <Message variant={'danger'} message={message} />
-      ) : null}
-        <h2>Login back to our faboulus website!</h2>
-        <p>You can use your e-mail or your google account</p>
-        <Stack gap={2}>
-          <div>
-            <Form.Label htmlFor="email">E-mail</Form.Label>
-            <Form.Control
-              type="text"
-              id="email"
-              placeholder="E-mail..." 
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div>
-            <Form.Label htmlFor="password">Password</Form.Label>
-            <Form.Control
-              type="password"
-              id="password"
-              placeholder="Password..." 
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <Button className="mx-auto" style={{width: '200px'}} variant="primary" onClick={login}>Login</Button>
-          <Button className="mx-auto" style={{width: '200px'}} variant="primary" onClick={loginWithGoogle}>Login with google</Button>
-          <Button className="mx-auto" style={{width: '200px'}} variant="primary" onClick={() => navigate('/signup')}>Don't have an account? Sign up!</Button>
-        </Stack>
-      </Container>
-      <br />
+      <body style={{ backgroundColor: '#F0F2F5' }}>
+        <br />
+        <Container style={{ width: '80%' }}>
+        {message ? (
+          <Message variant={'danger'} message={message} />
+        ) : null}
+          <h2>Login back to our faboulus website!</h2>
+          <p>You can use your e-mail or your google account</p>
+          <Stack gap={2}>
+            <div>
+              <Form.Label htmlFor="email">E-mail</Form.Label>
+              <Form.Control
+                type="text"
+                id="email"
+                placeholder="E-mail..." 
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div>
+              <Form.Label htmlFor="password">Password</Form.Label>
+              <Form.Control
+                type="password"
+                id="password"
+                placeholder="Password..." 
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <Button className="mx-auto" style={{width: '200px'}} variant="primary" onClick={login}>Login</Button>
+            <Button className="mx-auto" style={{width: '200px'}} variant="primary" onClick={loginWithGoogle}>Login with google</Button>
+            <Button className="mx-auto" style={{width: '200px'}} variant="primary" onClick={() => navigate('/signup')}>Don't have an account? Sign up!</Button>
+          </Stack>
+        </Container>
+        <br />
+      </body>
       <Footer />
     </>
   )

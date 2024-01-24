@@ -44,7 +44,7 @@ function CardComponent({eventId, name, date, time_start, time_end, location, pri
   };
 
   return (
-    <Card style={{ width: '18rem', position: 'relative' }}>
+    <Card style={{ width: '100%', position: 'relative' }}>
       <div style={{ position: 'absolute', top: '0', right: '0', background: 'rgba(255, 255, 255, 0.8)', padding: '5px' }}>
         <b>£{price}</b>
       </div>

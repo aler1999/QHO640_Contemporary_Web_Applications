@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Stack from 'react-bootstrap/Stack';
 import Form from 'react-bootstrap/Form';
 
+import BannerWithText from '../components/BannerWithText';
 import Card from '../components/Card';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
@@ -69,44 +70,47 @@ function Home() {
 
   return (
     <>
-    {console.log(eventList)}
       <Navigation />
-      <Container>
-        <h2>Welcome to the Student Events App</h2>
-        <p>The app that brings students together</p>
-        <Form.Label htmlFor="search">Search</Form.Label>
-        <Stack gap={2}>
-          <Form.Control
-            type="text"
-            id="search"
-            placeholder="Event name..."
-            onChange={handleSearchChange}
-          />
-        </Stack>
+
+      <body style={{ backgroundColor: '#F0F2F5' }}>
+        <BannerWithText imageUrl={"https://images.unsplash.com/photo-1530541930197-ff16ac917b0e"} title={"Student Events App"} description={"The app that brings students together"} />
         <br />
-        <Row className="justify-content-center">
-          {eventList.map((event) => (
-            <Col key={event.id} className="col-sm">
-              <Card 
-                key={event.id}
-                eventId={event.id}
-                name={event.name}
-                date={event.date}
-                time_start={event.time_start}
-                time_end={event.time_end}
-                location={event.location}
-                price={event.price}
-                owner={event.email}
-                image={event.image} 
-              />
-            </Col>
-          ))}
-        </Row>
-      </Container>
-      <br />
+        <Container style={{ width: '80%' }}>
+          <Form.Label htmlFor="search">Search</Form.Label>
+          <Stack gap={2}>
+            <Form.Control
+              type="text"
+              id="search"
+              placeholder="Event name..."
+              onChange={handleSearchChange}
+            />
+          </Stack>
+          <br />
+          <Row xs={1} md={2} lg={4} className="g-4">
+            {eventList.map((event) => (
+              <Col key={event.id}>
+                <Card
+                  key={event.id}
+                  eventId={event.id}
+                  name={event.name}
+                  date={event.date}
+                  time_start={event.time_start}
+                  time_end={event.time_end}
+                  location={event.location}
+                  price={event.price}
+                  owner={event.email}
+                  image={event.image}
+                />
+              </Col>
+            ))}
+          </Row>
+        </Container>
+        <br />
+      </body>
+
       <Footer />
     </>
-  )
-};
+  );
+}
 
 export default Home;
