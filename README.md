@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Student Events App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
+The application provides a practical solution by empowering students to create, manage, and participate in events, ultimately enhancing their social experiences. Moving forward, the implementation of this web application holds the potential to significantly impact the university community, fostering connections and creating a vibrant environment for social engagement. This project exemplifies the effectiveness of a user-centred approach in developing solutions that resonate with the real-life experiences of the target audience.
 
-## Available Scripts
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [License](#license)
+- [Contact](#contact)
 
-In the project directory, you can run:
+## Installation
+To install Student Events App Project, follow these steps:
 
-### `npm start`
+1. Install dependencies
+2. Start the application
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Usage
+Once the application is running, you can access it through your web browser at http://localhost:3000. Here are some key features and how to use them:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Event management**: Visualise, Create, edit, delete, participate to events.
+- **Search engine**: Search for an event.
 
-### `npm test`
+## Hosted preview online
+The application is hosted on: https://qho640-9e099.firebaseapp.com/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Credits
+Student Events App is maintained by [Alessandro Rotondo](https://github.com/aler1999).
 
-### `npm run build`
+## License
+This project is licensed under the [MIT License](LICENSE).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contact
+If you have any questions, feedback, or issues, feel free to reach out to us at [aleripod@gmail.com](mailto:aleripod@gmail.com).
